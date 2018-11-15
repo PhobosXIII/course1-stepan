@@ -10,20 +10,20 @@ import androidx.room.PrimaryKey;
 public class Clothes {
     @PrimaryKey(autoGenerate = true)
     private long id;
-    private String clothesType;
+    private String clothesName;
     private int tFrom;
     private int tTo;
     private String description;
 
 
-    public Clothes(String clothesType, int tFrom, int tTo, String description) {
-        this(0, clothesType, tFrom, tTo, description);
+    public Clothes(String clothesName, int tFrom, int tTo, String description) {
+        this(0, clothesName, tFrom, tTo, description);
     }
 
     @Ignore
-    public Clothes(long id, String clothesType, int tFrom, int tTo, String description) {
+    public Clothes(long id, String clothesName, int tFrom, int tTo, String description) {
         this.id = id;
-        this.clothesType = clothesType;
+        this.clothesName = clothesName;
         this.tFrom = tFrom;
         this.tTo = tTo;
         this.description = description;
@@ -37,12 +37,12 @@ public class Clothes {
         this.id = id;
     }
 
-    public String getClothesType() {
-        return clothesType;
+    public String getClothesName() {
+        return clothesName;
     }
 
-    public void setClothesType(String clothesType) {
-        this.clothesType = clothesType;
+    public void setClothesName(String clothesName) {
+        this.clothesName = clothesName;
     }
 
     public int getTFrom() {
@@ -77,13 +77,13 @@ public class Clothes {
         return id == clothes.id &&
                 tFrom == clothes.tFrom &&
                 tTo == clothes.tTo &&
-                Objects.equals(clothesType, clothes.clothesType) &&
+                Objects.equals(clothesName, clothes.clothesName) &&
                 Objects.equals(description, clothes.description);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, clothesType, tFrom, tTo, description);
+        return Objects.hash(id, clothesName, tFrom, tTo, description);
     }
 }

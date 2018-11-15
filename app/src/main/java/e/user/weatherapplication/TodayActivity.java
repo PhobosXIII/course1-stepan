@@ -12,7 +12,7 @@ public class TodayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today);
         FloatingActionButton fabList = findViewById(R.id.fabList);
-        fabList.setOnClickListener(v -> );
+        fabList.setOnClickListener(v -> startActivity(ListActivity.getStartIntent(this)));
     }
 
 
