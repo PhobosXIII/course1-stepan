@@ -3,10 +3,8 @@ package e.user.weatherapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,29 +30,22 @@ public class ListActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        initList();
+
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(view -> startActivity(AddActivity.getStartIntent(this)));
     }
+
     private void initList() {
-        RecyclerView rvPeople = findViewById(R.id.rvClothesList);
-        rvPeople.setHasFixedSize(true);
-        rvPeople.setLayoutManager(new LinearLayoutManager(this));
-        rvPeople.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        RecyclerView rvClothes = findViewById(R.id.rvClothesList);
+        rvClothes.setHasFixedSize(true);
+        rvClothes.setLayoutManager(new LinearLayoutManager(this));
+        rvClothes.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
+        List<Clothes> clothes = new ArrayList<>(3);
+        clothes.add(new Clothes("T-shirt", -5, 25, "ABC"));
 
-        List<Clothes> people = new ArrayList<>(3);
-        people.add(new Clothes("T-shirt", -5, 25, "ABC"));
-
-        adapter = new ClothesAdapter(people, person -> {
-            Intent intent = AddActivity.getStartIntent(this);
-            startActivity(intent);
-        });
-        rvPeople.setAdapter(adapter);
+        adapter = new ClothesAdapter(clothes);
+        rvClothes.setAdapter(adapter);
     }
 }

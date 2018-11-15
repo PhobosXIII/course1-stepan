@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">WeatherApplication</string>
-    <string name="title_activity_list">ListActivity</string>
+    <string name="app_name">Что надеть?</string>
+    <string name="title_activity_list">Одежда</string>
 </resources>

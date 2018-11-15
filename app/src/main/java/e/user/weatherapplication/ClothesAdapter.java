@@ -12,15 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ClothesViewHolder> {
     List<Clothes> clothes;
-    private OnItemClickListener itemClickListener;
 
-    public interface OnItemClickListener {
-        void onItemClick(Clothes item);
-    }
-
-    public ClothesAdapter(List<Clothes> clothes, OnItemClickListener itemClickListener) {
+    public ClothesAdapter(List<Clothes> clothes) {
         this.clothes = clothes;
-        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -32,7 +26,7 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ClothesV
 
     @Override
     public void onBindViewHolder(@NonNull ClothesViewHolder clothesViewHolder, int position) {
-        clothesViewHolder.bind(clothes.get(position), itemClickListener);
+        clothesViewHolder.bind(clothes.get(position));
     }
 
     public void add(Clothes clothes) {
@@ -40,9 +34,9 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ClothesV
         notifyDataSetChanged();
     }
 
-    public void update(List<Clothes> people) {
+    public void update(List<Clothes> clothes) {
         this.clothes.clear();
-        this.clothes.addAll(people);
+        this.clothes.addAll(clothes);
         notifyDataSetChanged();
     }
 
@@ -65,10 +59,9 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ClothesV
 
         }
 
-        public void bind(Clothes clothes, final OnItemClickListener itemClickListener) {
-            itemView.setOnClickListener(v -> itemClickListener.onItemClick(clothes));
+        public void bind(Clothes clothes) {
             tvName.setText(clothes.getClothesName());
-            String tempRange = String.format("%d-%d", clothes.getTFrom(), clothes.getTTo());
+            String tempRange = String.format("%d - %d", clothes.getTFrom(), clothes.getTTo());
             tvTemperature.setText(tempRange);
         }
     }
