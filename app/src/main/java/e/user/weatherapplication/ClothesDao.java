@@ -12,7 +12,7 @@ public interface ClothesDao {
     @Query("SELECT * FROM clothes")
     List<Clothes> getAll();
 
-    @Query("SELECT * FROM clothes WHERE tFrom >= :temperature AND tTo <= :temperature")
+    @Query("SELECT * FROM clothes WHERE :temperature >= tFrom AND :temperature <= tTo")
     List<Clothes> getByTemperature(int temperature);
 
     @Query("SELECT * FROM clothes WHERE id = :id")

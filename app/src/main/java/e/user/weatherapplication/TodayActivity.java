@@ -22,6 +22,13 @@ public class TodayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today);
 
+        FloatingActionButton fabList = findViewById(R.id.fabList);
+        fabList.setOnClickListener(v -> startActivity(ListActivity.getStartIntent(this)));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         TextView tvDayTemp = findViewById(R.id.tvDayTemperature);
         TextView tvNightTemp = findViewById(R.id.tvNightTemperature);
 
@@ -30,8 +37,6 @@ public class TodayActivity extends AppCompatActivity {
         tvNightTemp.setText(String.valueOf(generator.getTemperature()));
         initList(temperature);
 
-        FloatingActionButton fabList = findViewById(R.id.fabList);
-        fabList.setOnClickListener(v -> startActivity(ListActivity.getStartIntent(this)));
     }
 
     private void initList(int temperature) {

@@ -46,7 +46,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTemperature">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/itTemperatureFrom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberSigned"
@@ -65,7 +64,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTemperature">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/itTemperatureTo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberSigned"
@@ -83,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/itlTemperatureTo" />
 
     <EditText
-        android:id="@+id/etDescription"
+        android:id="@+id/itDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

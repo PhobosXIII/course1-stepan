@@ -103,7 +103,7 @@
         android:layout_marginBottom="16dp"
         android:clickable="true"
         android:tint="@android:color/white"
-        app:backgroundTint="@color/design_default_color_primary"
+        app:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_list_black_24dp" />

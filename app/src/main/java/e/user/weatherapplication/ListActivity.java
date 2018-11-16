@@ -36,15 +36,20 @@ public class ListActivity extends AppCompatActivity {
         fab.setOnClickListener(view -> startActivity(AddActivity.getStartIntent(this)));
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        List<Clothes> clothes = AppDatabase.getInstance(this).clothesDao().getAll();
+        adapter.update(clothes);
+    }
+
     private void initList() {
         RecyclerView rvClothes = findViewById(R.id.rvClothesList);
         rvClothes.setHasFixedSize(true);
         rvClothes.setLayoutManager(new LinearLayoutManager(this));
         rvClothes.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
-        List<Clothes> clothes = new ArrayList<>(3);
-        clothes.add(new Clothes("T-shirt", -5, 25, "ABC"));
-
+        List<Clothes> clothes = AppDatabase.getInstance(this).clothesDao().getAll();
         adapter = new ClothesAdapter(clothes);
         rvClothes.setAdapter(adapter);
     }
